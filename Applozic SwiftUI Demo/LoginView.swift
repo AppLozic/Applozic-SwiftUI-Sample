@@ -15,16 +15,25 @@ struct LoginView: View {
 
     @State private var userId: String = ""
     @State private var password: String = ""
+    @ObservedObject private var keyboard = KeyboardResponder()
+    private var chatManager: ALChatManager {
+        return ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+    }
 
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Enter your user Id", text: $userId)
-                    .frame(height: 40)
-                    .border(Color.black, width: 1)
-                TextField("Enter your password", text: $password)
-                    .frame(height: 40)
-                    .border(Color.black, width: 1)
+                TextField(
+                    "User id (Use a random id for the first time)",
+                    text: $userId
+                )
+                    .autocapitalization(.none)
+                    .padding(10)
+                    .border(Color.gray, width: 1)
+
+                SecureField("Password", text: $password)
+                    .padding(10)
+                    .border(Color.gray, width: 1)
                     .padding(.vertical)
                 Button("Submit") {
                     self.login()
@@ -32,10 +41,11 @@ struct LoginView: View {
                 .frame(minWidth: nil, maxWidth: .infinity, minHeight: 40)
                 .accentColor(.white)
                 .background(Color.blue)
-
-
             }
             .padding()
+            .padding(.bottom, keyboard.currentHeight)
+            .edgesIgnoringSafeArea(.bottom)
+            .animation(.easeOut(duration: 0.16))
             .navigationBarTitle("Sign in", displayMode: .inline)
         }
         
@@ -45,7 +55,7 @@ struct LoginView: View {
         let alUser = ALUser()
         alUser.userId = userId
         alUser.password = password
-        ALChatManager.shared.connectUser(alUser) { URLResponse, error in
+        chatManager.connectUser(alUser) { URLResponse, error in
             if error == nil {
                 self.isPresented = false
             }

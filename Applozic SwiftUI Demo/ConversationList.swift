@@ -22,3 +22,17 @@ struct ConversationList: UIViewControllerRepresentable {
 
     typealias UIViewControllerType = ALKConversationListViewController
 }
+
+struct ConversationView: View {
+
+    var body: some View {
+        ConversationList()
+            .navigationBarTitle("Chats", displayMode: .inline)
+    }
+}
+
+struct ConversationView_Preview: PreviewProvider {
+    static var previews: some View {
+        ConversationView()
+    }
+}

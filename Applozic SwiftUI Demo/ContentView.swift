@@ -17,21 +17,12 @@ struct ContentView: View {
     @State private var showingConversation = false
     @State private var showingLogin = false
 
-    // Workaround for inactive navigation link iOS 13.3 bug
-    // Source: https://stackoverflow.com/a/59291574/3637751
-    @State private var destID = 0
-
     var body: some View {
         NavigationView {
-            VStack {
-                NavigationLink(destination: ConversationList()
-                    .onDisappear() { self.destID = self.destID + 1 }
-                ) {
-                    Text("Launch chat")
-                }
-                .navigationBarTitle("Welcome", displayMode: .inline)
-                .id(destID)
+            NavigationLink(destination: ConversationView()) {
+                Text("Launch chat")
             }
+            .navigationBarTitle("Welcome", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button("Sign out") {
                     self.onSignOut()
