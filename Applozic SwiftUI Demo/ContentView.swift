@@ -7,21 +7,50 @@
 //
 
 import SwiftUI
+import Applozic
+
+enum ActiveSheet {
+    case login, conversation
+}
 
 struct ContentView: View {
     @State private var showingConversation = false
+    @State private var showingLogin = false
+
+    // Workaround for inactive navigation link iOS 13.3 bug
+    // Source: https://stackoverflow.com/a/59291574/3637751
+    @State private var destID = 0
 
     var body: some View {
-        VStack {
-            Text("Welcome")
-            Button("Launch Chat") {
-                self.showingConversation = true
+        NavigationView {
+            VStack {
+                NavigationLink(destination: ConversationList()
+                    .onDisappear() { self.destID = self.destID + 1 }
+                ) {
+                    Text("Launch chat")
+                }
+                .navigationBarTitle("Welcome", displayMode: .inline)
+                .id(destID)
             }
-                .padding(.top, 50)
+            .navigationBarItems(trailing:
+                Button("Sign out") {
+                    self.onSignOut()
+                }
+            )
         }
-        .sheet(isPresented: $showingConversation) {
-            ConversationList()
+        .onAppear(perform: initialActions)
+        .sheet(isPresented: $showingLogin) {
+            LoginView(isPresented: self.$showingLogin)
         }
+    }
+
+    func initialActions() {
+        showingLogin = !ALUserDefaultsHandler.isLoggedIn()
+    }
+
+    func onSignOut() {
+        ALChatManager.shared.logoutUser()
+        showingLogin = true
     }
 }
 
