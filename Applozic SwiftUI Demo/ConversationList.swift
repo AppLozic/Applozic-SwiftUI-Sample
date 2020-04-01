@@ -27,6 +27,7 @@ struct ConversationView: View {
 
     var body: some View {
         ConversationList()
+            .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("Chats", displayMode: .inline)
     }
 }
