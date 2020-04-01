@@ -22,7 +22,6 @@ struct ConversationList: UIViewControllerRepresentable {
 
         let conversationViewController = conversationVC(contactId: receiverUserId, configuration: ALKConfiguration())
         let navigationController = ALKBaseNavigationViewController(rootViewController: conversationViewController)
-        navigationController.modalPresentationStyle = .fullScreen
         return navigationController
     }
 
@@ -33,6 +32,7 @@ struct ConversationView: View {
 
     var body: some View {
         ConversationList()
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
