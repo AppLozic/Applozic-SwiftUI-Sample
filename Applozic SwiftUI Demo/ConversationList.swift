@@ -11,23 +11,28 @@ import SwiftUI
 import ApplozicSwift
 
 struct ConversationList: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: ALKConversationListViewController, context: UIViewControllerRepresentableContext<ConversationList>) {
+    func updateUIViewController(_ uiViewController: ALKBaseNavigationViewController, context: UIViewControllerRepresentableContext<ConversationList>) {
         
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ConversationList>) -> ALKConversationListViewController {
-        let picker = ALKConversationListViewController(configuration: ALKConfiguration())
-        return picker
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ConversationList>) -> ALKBaseNavigationViewController {
+        // Pass receiver's user Id
+        let receiverUserId = ""
+        assert(!receiverUserId.isEmpty, "Pass receiver's user Id")
+
+        let conversationViewController = conversationVC(contactId: receiverUserId, configuration: ALKConfiguration())
+        let navigationController = ALKBaseNavigationViewController(rootViewController: conversationViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        return navigationController
     }
 
-    typealias UIViewControllerType = ALKConversationListViewController
+    typealias UIViewControllerType = ALKBaseNavigationViewController
 }
 
 struct ConversationView: View {
 
     var body: some View {
         ConversationList()
-            .navigationBarTitle("Chats", displayMode: .inline)
     }
 }
 
@@ -35,4 +40,14 @@ struct ConversationView_Preview: PreviewProvider {
     static var previews: some View {
         ConversationView()
     }
+}
+
+func conversationVC(
+    contactId: String,
+    configuration: ALKConfiguration
+) -> ALKConversationViewController {
+    let convViewModel = ALKConversationViewModel(contactId: contactId, channelKey: nil, localizedStringFileName: configuration.localizedStringFileName)
+    let conversationViewController = ALKConversationViewController(configuration: configuration)
+    conversationViewController.viewModel = convViewModel
+    return conversationViewController
 }

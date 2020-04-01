@@ -19,8 +19,9 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            NavigationLink(destination: ConversationView()) {
-                Text("Launch chat")
+            Button("Launch chat") { self.showingConversation = true }
+                .sheet(isPresented: $showingConversation) {
+                    ConversationView()
             }
             .navigationBarTitle("Welcome", displayMode: .inline)
             .navigationBarItems(trailing:
