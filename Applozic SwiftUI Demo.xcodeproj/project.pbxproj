@@ -17,7 +17,6 @@
 		8B874C2623D57D680018A321 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B874C2523D57D680018A321 /* Preview Assets.xcassets */; };
 		8B874C2923D57D680018A321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B874C2723D57D680018A321 /* LaunchScreen.storyboard */; };
 		8B874C3423D57D690018A321 /* Applozic_SwiftUI_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B874C3323D57D690018A321 /* Applozic_SwiftUI_DemoTests.swift */; };
-		8B920D1F23D5B44B0006A94A /* ConversationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B920D1E23D5B44B0006A94A /* ConversationList.swift */; };
 		FDC9F7B1107DD53E4EEF92B8 /* Pods_Applozic_SwiftUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ED5F8D4C422A40F9029874 /* Pods_Applozic_SwiftUI_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +47,6 @@
 		8B874C2F23D57D690018A321 /* Applozic SwiftUI DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Applozic SwiftUI DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B874C3323D57D690018A321 /* Applozic_SwiftUI_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applozic_SwiftUI_DemoTests.swift; sourceTree = "<group>"; };
 		8B874C3523D57D690018A321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B920D1E23D5B44B0006A94A /* ConversationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationList.swift; sourceTree = "<group>"; };
 		AEC7002AD1E8C227022CF2E2 /* Pods-Applozic SwiftUI Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Applozic SwiftUI Demo.debug.xcconfig"; path = "Target Support Files/Pods-Applozic SwiftUI Demo/Pods-Applozic SwiftUI Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		E527874176544700344295EB /* Pods-Applozic SwiftUI Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Applozic SwiftUI Demo.release.xcconfig"; path = "Target Support Files/Pods-Applozic SwiftUI Demo/Pods-Applozic SwiftUI Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +111,6 @@
 				8B874C2723D57D680018A321 /* LaunchScreen.storyboard */,
 				8B874C2A23D57D680018A321 /* Info.plist */,
 				8B874C2423D57D680018A321 /* Preview Content */,
-				8B920D1E23D5B44B0006A94A /* ConversationList.swift */,
 				8B6B078823D5D61F001EAB7B /* LoginView.swift */,
 				8B6B078C23D72358001EAB7B /* KeyboardResponder.swift */,
 			);
@@ -293,7 +290,6 @@
 				8B6B078B23D5EFE8001EAB7B /* ALChatManager.swift in Sources */,
 				8B874C1A23D57D600018A321 /* AppDelegate.swift in Sources */,
 				8B6B078D23D72358001EAB7B /* KeyboardResponder.swift in Sources */,
-				8B920D1F23D5B44B0006A94A /* ConversationList.swift in Sources */,
 				8B874C2123D57D600018A321 /* ContentView.swift in Sources */,
 				8B6B078923D5D61F001EAB7B /* LoginView.swift in Sources */,
 				8B874C1C23D57D600018A321 /* SceneDelegate.swift in Sources */,
